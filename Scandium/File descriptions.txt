@@ -1,0 +1,16 @@
+LSQcurvefit_noread and LSQcurvefit_read are the programs that execute the fitting routine.
+The synthetic spectrum is generated in function IcreatorB. 
+The sixj symbols are calculated using the following programs: sixjsymbol, delta6j
+The functions of quantum numbers to obtain the wavenumbers of hfs components are calculated
+using programs: Ccalc, Dcalc
+
+Uncertainties are derived using: determine_delta
+The pure spectrum is fitted using: fitpure. The synthetic spectrum is then generated using:
+create_hfpat (essentially the same as Icreator).
+
+plot_synth_obs_func_gen allows to plot and compare an synthetic spectrum with the observed
+spectrum.
+
+hfsloggf_calculator is used to calculate hfs gf values.
+
+Scdata18_cal_SNR is the observed spectrum.

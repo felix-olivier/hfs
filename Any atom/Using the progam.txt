@@ -1,0 +1,19 @@
+How to use the program:
+
+The main program is LSQcurvefit_noread_gen, with input parameters (Ju,Jl,wavenrJ,Au,Bu,Al,Bl, data, lock, uncert,letplot, Iqnr, figureindex).
+ 
+Ju is the J quantum number of the upper level, as is given on for instance NIST.
+Jl is the J quantum number of the lower level, as is given on for instance NIST.
+wavenrJ is the centre of gravity wavenumber, as is given on for instance NIST.
+Au, Bu, Al, Bl are the hfs constants of the upper and lower level respectively. You will need initial values for these, which you can find in the literature for some levels.
+data is a matrix containing the spectrum that you want to analyse. You need to read this in beforehand, which can take some time. The first column of the matrix should contain the wavenumbers, the second column should contain the intensities.
+lock is an array, which is used to lock certain parameters in the fit. use [0 0 0 0 0 0 0 0] to lock nothing, change a 0 to 1 to lock a parameter where the order is [wavenrJ, Au, Bu, Al, Bl,  width, lift, MaxIntensity]
+uncert is to choose whether you want to derive uncertainties on the hfs constants. Use 0 for no uncertainties, use 1 to get uncertainties. (Deriving uncertainties takes a long time).
+letplot is to choose whether you want to see a plot of the resulting fit. set to 0 for no plots, use 1 for plots.
+Iqnr is the spin quantum number of the element. In this case Iqnr=9/2.
+figureindex can be set to 1.
+
+If you execute the following in Matlab
+ 
+[warnings, HF_constants,HF_uncert,lineprop, x,wavenrstotest, Imod]=LSQcurvefit_noread_gen(Ju,Jl,wavenrJ,Au,Bu,Al,Bl, data, lock, uncert,letplot, Iqnr, figureindex);
+The first element of array x should contain the centre of gravity wavenumber. The energy and wavenumbers for hfs levels/transitions can be calculated with the fitted hfs constants. The hfs constants are returned in HF_constants.
